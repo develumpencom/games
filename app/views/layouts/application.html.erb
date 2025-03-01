@@ -23,8 +23,16 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto my-10 px-5">
+      <div class="mb-10">
+        <%= link_to "games.breakabletoys.com", root_path, class: "text-2xl font-semibold" %>
+      </div>
+
       <%= yield %>
+
+      <footer class="mt-20">
+        <p class="text-sm"><%= link_to "games.breakabletoys.com", root_url %> is part of <%= link_to "breakabletoys.com", "https://breakabletoys.com" %></p>
+      </footer>
     </main>
   </body>
 </html>
