@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bgg_id: MyString
+  bgg_type: boardgame
+  name: MyString
+  thumbnail: MyString
+  description: MyText
+  yearpublished: MyString
+  minplayers: MyString
+  maxplayers: MyString
+  playingtime: MyString
+  minplaytime: MyString
+  maxplaytime: MyString
+  minage: MyString
+  categories: 
+  mechanics: 
+  expansions: 
+  designers: 
+  artists: 
+  publishers: 
+
+two:
+  bgg_id: MyString
+  bgg_type: boardgameexpansion
+  name: MyString
+  thumbnail: MyString
+  description: MyText
+  yearpublished: MyString
+  minplayers: MyString
+  maxplayers: MyString
+  playingtime: MyString
+  minplaytime: MyString
+  maxplaytime: MyString
+  minage: MyString
+  categories: 
+  mechanics: 
+  expansions: 
+  designers: 
+  artists: 
+  publishers: 
