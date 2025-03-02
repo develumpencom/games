@@ -1,0 +1,43 @@
+<% if @game %>
+  <h1 class="mb-5 text-2xl">
+    <%= @game[:name] %>
+    <% if @game[:yearpublished].present? %>
+      <span class="text-sm">(<%= @game[:yearpublished] %>)</span>
+    <% end %>
+  </h1>
+
+  <%= image_tag(@game[:thumbnail]) if @game[:thumbnail] %>
+
+  <div class="my-5">
+    <% if @game[:designers].any? %>
+      <p><strong class="font-semibold">Designed by:</strong> <%= @game[:designers].map { |designer| designer[:value] }.join(", ") %></p>
+    <% end %>
+    <% if @game[:artists].any? %>
+      <p><strong class="font-semibold">Artists:</strong> <%= @game[:artists].map { |artist| artist[:value] }.join(", ") %></p>
+    <% end %>
+  </div>
+
+  <div class="my-5">
+    <% if @game[:categories].any? %>
+      <p><strong class="font-semibold">Categories:</strong> <%= @game[:categories].map { |category| category[:value] }.join(", ") %></p>
+    <% end %>
+    <% if @game[:mechanics].any? %>
+      <p><strong class="font-semibold">Mechanics:</strong> <%= @game[:mechanics].map { |mechanic| mechanic[:value] }.join(", ") %></p>
+    <% end %>
+  </div>
+
+  <% if @game[:expansions].any? %>
+    <div class="my-5">
+      <h2 class="text-xl">Expansions</h2>
+      <ul class="list-inside list-disc">
+        <% @game[:expansions].each do |expansion| %>
+          <li><%= link_to expansion[:value], game_path(expansion[:id]) %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= link_to "View on BGG", "https://boardgamegeek.com/boardgame/#{@game[:id]}", class: "text-sm" %>
+<% else %>
+  <p>We don't know how to show you this information. A message has been sent to our webmaster and hopefully they'll do something about it.</p>
+<% end %>
