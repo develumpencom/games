@@ -66,4 +66,4 @@ end
 
 gem "faraday", "~> 2.12"
 
-gem "users", "~> 0.3.0", :git => "https://github.com/develumpencom/users.git"
+gem "users", "~> 0.3.0", git: "https://github.com/develumpencom/users.git"

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   resources :games, only: [ :show ]
+  resources :lists
   resource :search, only: [ :show ], controller: "search"
 
   # Defines the root path route ("/")

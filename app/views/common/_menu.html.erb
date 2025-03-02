@@ -5,6 +5,7 @@
   <ul class="flex items-center space-x-3">
     <li><%= link_to "Search", search_path %></li>
     <% if authenticated? %>
+      <li><%= link_to "Lists", lists_path %>
       <li><%= button_to "Sign out", users.session_path, method: :delete %></li>
     <% else %>
       <li><%= link_to "Sign in", users.oauth_auth_path %></li>
