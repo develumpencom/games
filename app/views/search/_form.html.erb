@@ -1,0 +1,5 @@
+<%= form_with(url: search_path, method: :get, class: "mb-5 flex flex-col space-y-1 md:flex-row md:space-y-0 md:space-x-1 lg:max-w-2/3") do |form| %>
+  <%= form.text_field :query, value: params[:query], class: "grow px-1 border border-black" %>
+  <%= form.select :type, options_for_select(Bgg::SEARCH_TYPES, params[:type]), {}, class: "appearance-none px-1 border border-black" %>
+  <%= form.submit "Search", name: nil, class: "px-1 border border-black " %>
+<% end %>
