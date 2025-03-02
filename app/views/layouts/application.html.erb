@@ -26,6 +26,14 @@
     <main class="container mx-auto my-10 px-5">
       <%= render "common/menu" %>
       <%= yield %>
+
+      <footer class="mt-20">
+        <%=
+          link_to "https://boardgamegeek.com", target: "_blank" do
+            image_tag("bgg-logo.png", class: "w-48")
+          end
+        %>
+      </footer>
     </main>
   </body>
 </html>
