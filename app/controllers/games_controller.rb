@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  allow_unauthenticated_access
+
   before_action :set_game, only: %i[show]
   def show
   end
