@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_listings, only: [ :show ]
 
   def index
     @lists = Current.user.lists
@@ -47,5 +48,9 @@ class ListsController < ApplicationController
 
   def set_list
     @list ||= Current.user.lists.find(params[:id])
+  end
+
+  def set_listings
+    @listings = @list.listings.includes(listable: [ :game ])
   end
 end

@@ -30,14 +30,37 @@
     <div class="my-5">
       <h2 class="text-xl">Expansions</h2>
       <ul class="list-inside list-disc">
-        <% @game.expansions.each do |expansion| %>
+        <% @game.expansions.first(3).each do |expansion| %>
           <li><%= link_to expansion["value"], game_path(expansion["id"]) %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <%= link_to "View on BGG", "https://boardgamegeek.com/boardgame/#{@game[:id]}", class: "text-sm" %>
+  <div class="my-5">
+    <%= link_to "View on BGG", "https://boardgamegeek.com/boardgame/#{@game[:id]}", class: "text-sm" %>
+  </div>
+
+  <% if authenticated? %>
+    <div class="my-5">
+
+      <h2 class="text-xl">In your lists</h2>
+      <ul class="list-inside list-disc">
+        <% @game.listings.each do |listing| %>
+          <li>
+            <%= link_to listing.list.name, list_path(listing.list) %>
+            <%= button_to "Remove from list", listing_path(listing), method: :delete, data: { turbo_confirm: "Are you sure?" }, form_class: "inline", class: "text-sm text-gray-500" %>
+          </li>
+        <% end %>
+      </ul>
+
+      <%= form_with(model: Listing.new, url: game_listings_path(@game), class: "mt-3") do |form| %>
+        <%= form.select :list_id, options_from_collection_for_select(@lists, 'id', 'name'), { include_blank: true }, { class: "appearance-none px-1 border border-black" } %>
+        <%= form.submit "Add to list", class: "px-1 border border-black" %>
+      <% end %>
+    </div>
+  <% end %>
+
 <% else %>
   <p>We don't know how to show you this information. A message has been sent to our webmaster and hopefully they'll do something about it.</p>
 <% end %>

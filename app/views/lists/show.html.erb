@@ -1,3 +1,18 @@
 <h1 class="mb-5 text-2xl"><%= @list.name %></h1>
 
 <%= link_to "Edit list", edit_list_path(@list) %>
+
+<div class="my-5">
+  <% if @listings.any? %>
+    <ul class="list-inside list-disc">
+      <% @listings.each do |listing| %>
+        <li>
+          <%= link_to listing.listable.name, polymorphic_path(listing.listable) %>
+          <%= button_to "Remove from list", listing_path(listing), method: :delete, data: { turbo_confirm: "Are you sure?" }, form_class: "inline", class: "text-sm text-gray-500" %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>You haven't added anything to this list yet.</p>
+  <% end %>
+</div>
