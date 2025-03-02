@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/develumpencom/users.git
+  revision: 83911e47f88b803cd63240f94441cf7d86817339
+  specs:
+    users (0.3.0)
+      bcrypt
+      faraday (~> 2.12)
+      jwt (~> 2.10)
+      rails (>= 7.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -76,6 +86,7 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.2)
     base64 (0.2.0)
+    bcrypt (3.1.20)
     bcrypt_pbkdf (1.1.1)
     bcrypt_pbkdf (1.1.1-arm64-darwin)
     bcrypt_pbkdf (1.1.1-x86_64-darwin)
@@ -135,6 +146,8 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.10.1)
+    jwt (2.10.1)
+      base64
     kamal (2.5.3)
       activesupport (>= 7.0)
       base64 (~> 0.2)
@@ -400,6 +413,7 @@ DEPENDENCIES
   thruster
   turbo-rails
   tzinfo-data
+  users (~> 0.3.0)!
   web-console
 
 BUNDLED WITH
