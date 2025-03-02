@@ -8,7 +8,7 @@
   <ul class="list-inside list-disc">
     <% @items.each do |item| %>
       <li>
-        <%= link_to_if authenticated?, game_path(item[:id]) do %>
+        <%= link_to game_path(item[:id]) do %>
           <%= item[:name] %>
           <% if item[:yearpublished].present? %>
             (<%= item[:yearpublished] %>)

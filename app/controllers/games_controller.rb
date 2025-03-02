@@ -1,6 +1,8 @@
 class GamesController < ApplicationController
+  allow_unauthenticated_access only: %i[show]
+
   before_action :set_game, only: %i[show]
-  before_action :set_lists, only: %i[show]
+  before_action :set_lists, only: %i[show], if: -> { authenticated? }
 
   def show
   end

@@ -54,9 +54,11 @@
         <% end %>
       </ul>
 
-      <%= form_with(model: Listing.new, url: game_listings_path(@game), class: "mt-3") do |form| %>
-        <%= form.select :list_id, options_from_collection_for_select(@lists, 'id', 'name'), { include_blank: true }, { class: "appearance-none px-1 border border-black" } %>
-        <%= form.submit "Add to list", class: "px-1 border border-black" %>
+      <% if @lists.any? %>
+        <%= form_with(model: Listing.new, url: game_listings_path(@game), class: "mt-3") do |form| %>
+          <%= form.select :list_id, options_from_collection_for_select(@lists, 'id', 'name'), { include_blank: true }, { class: "appearance-none px-1 border border-black" } %>
+          <%= form.submit "Add to list", class: "px-1 border border-black" %>
+        <% end %>
       <% end %>
     </div>
   <% end %>
