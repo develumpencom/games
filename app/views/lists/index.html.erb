@@ -1,0 +1,15 @@
+<h1 class="mb-5 text-2xl">Lists</h1>
+
+<%= link_to "Add list", new_list_path %>
+
+<div class="my-5">
+  <% if @lists.any? %>
+    <ul class="list-inside list-disc">
+      <% @lists.each do |list| %>
+        <li><%= link_to list.name, list_path(list) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>You haven't created any list yet.</p>
+  <% end %>
+</div>

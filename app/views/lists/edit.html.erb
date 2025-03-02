@@ -1,0 +1,7 @@
+<h1 class="mb-5 text-2xl">Edit list</h1>
+
+<%= render "form", model: @list %>
+
+<div class="mt-10">
+  <%= button_to "Delete list", list_path(@list), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+</div>
