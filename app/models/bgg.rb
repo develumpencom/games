@@ -1,6 +1,4 @@
 class Bgg
-  SEARCH_TYPES = %i[boardgame boardgameaccessory boardgameexpansion rpgitem]
-
   def self.search(query, type = "boardgame")
     response = connection.get("search", { query:, type: })
 

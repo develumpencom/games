@@ -27,18 +27,20 @@
   </div>
 
   <% if @game.expansions.any? %>
-    <div class="my-5">
-      <h2 class="text-xl">Expansions</h2>
+    <div data-controller="collapse" class="my-5">
+      <h2 class="text-xl"><%= @game.bgg_type == "boardgame" ? "Expansions" : "Expansion for" %></h2>
       <ul class="list-inside list-disc">
-        <% @game.expansions.first(3).each do |expansion| %>
-          <li><%= link_to expansion["value"], game_path(expansion["id"]) %></li>
+        <% @game.expansions.each do |expansion| %>
+          <li data-collapse-target="element"><%= link_to expansion["value"], game_path(expansion["id"]) %></li>
         <% end %>
       </ul>
+      <span data-collapse-target="more" data-action="click->collapse#showAll" class="mt-3 text-sm cursor-pointer">View more</span>
+      <span data-collapse-target="less" data-action="click->collapse#showLess" class="mt-3 text-sm hidden cursor-pointer">View less</span>
     </div>
   <% end %>
 
   <div class="my-5">
-    <%= link_to "View on BGG", "https://boardgamegeek.com/boardgame/#{@game[:id]}", class: "text-sm" %>
+    <%= link_to "View on BGG", "https://boardgamegeek.com/boardgame/#{@game.bgg_id}", class: "text-sm" %>
   </div>
 
   <% if authenticated? %>

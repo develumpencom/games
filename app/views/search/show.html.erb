@@ -1,9 +1,5 @@
 <%= render "form" %>
 
-<div class="my-5">
-  <p><%= link_to "Sign in", users.oauth_auth_path %> to see the games. This is due a bug we're fixing right now. Games should be available for everyone soon.</p>
-</div>
-
 <% if @items.any? %>
   <ul class="list-inside list-disc">
     <% @items.each do |item| %>
