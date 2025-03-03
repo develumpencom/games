@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_02_205415) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_02_212442) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -35,6 +35,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_02_205415) do
     t.jsonb "publishers"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.bigint "list_id", null: false
+    t.string "listable_type", null: false
+    t.bigint "listable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_listings_on_list_id"
+    t.index ["listable_type", "listable_id"], name: "index_listings_on_listable"
   end
 
   create_table "lists", force: :cascade do |t|
@@ -63,6 +73,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_02_205415) do
     t.index ["user_id"], name: "index_users_sessions_on_user_id"
   end
 
+  add_foreign_key "listings", "lists"
   add_foreign_key "lists", "users"
   add_foreign_key "users_sessions", "users"
 end

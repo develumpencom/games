@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  resources :games, only: [ :show ]
+  resources :games, only: [ :show ] do
+    resources :listings, only: [ :create, :destroy ], shallow: true
+  end
   resources :lists
   resource :search, only: [ :show ], controller: "search"
 

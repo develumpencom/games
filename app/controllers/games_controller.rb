@@ -1,7 +1,9 @@
 class GamesController < ApplicationController
-  allow_unauthenticated_access
+  allow_unauthenticated_access only: %i[show]
 
   before_action :set_game, only: %i[show]
+  before_action :set_lists, only: %i[show], if: -> { authenticated? }
+
   def show
   end
 
@@ -29,5 +31,9 @@ class GamesController < ApplicationController
       game.artists = bgg_game[:artists]
       game.publishers = bgg_game[:publishers]
     end
+  end
+
+  def set_lists
+    @lists = Current.user.lists.where.not(id: @game.listings.pluck(:list_id))
   end
 end
