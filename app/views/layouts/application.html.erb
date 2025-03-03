@@ -26,14 +26,18 @@
     <main class="container mx-auto my-10 px-5">
       <%= render "common/menu" %>
       <%= yield %>
+    </main>
 
-      <footer class="mt-20">
+    <footer class="mt-20 container mx-auto px-5">
+      <p class="text-sm">games.breakabletoys.com is part of <%= link_to "breakabletoys.com", "https://breakabletoys.com" %></p>
+
+      <div class="">
         <%=
-          link_to "https://boardgamegeek.com", target: "_blank" do
+          link_to "https://boardgamegeek.com", target: "_blank", class: "inline-block" do
             image_tag("bgg-logo.png", class: "w-48")
           end
         %>
+      </div>
       </footer>
-    </main>
   </body>
 </html>
